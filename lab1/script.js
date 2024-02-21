@@ -138,7 +138,7 @@ function triangle(val1, type1, val2, type2) {
             alpha = val1;
             switch (type2) {
                 case "leg":
-                    alpha = val2;
+                    a = val2;
                     
                     c = a / Math.cos(alpha * (Math.PI / 180));
                     b = Math.sqrt(c ** 2 - a ** 2);
