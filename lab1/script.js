@@ -37,7 +37,7 @@ function triangle(val1, type1, val2, type2) {
         return "failed";
     }
     
-    if (type1 === "adjacent angle" && (val1 >= 90 || val1 <= 0) || type2 === "adjacent angle" && (val2 >= 90 || val2 <= 0)) {
+    if (type1 === "adjacent angle" && (val1 >= 90 || val1 <= 0.00000000001) || type2 === "adjacent angle" && (val2 >= 90 || val2 <= 0.00000000001)) {
         console.log("Кути повинні бути гострими (меншими за 90 градусів).");
         return "failed";
     }
