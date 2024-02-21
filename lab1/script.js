@@ -37,17 +37,17 @@
             return "failed";
         }
         
-        if (type1 === "adjacent angle" && (val1 >= 90 || val1 <= 0.00000001) || type2 === "adjacent angle" && (val2 >= 90 || val2 <= 0.00000001)) {
+        if (type1 === "adjacent angle" && (val1 >= 90 || val1 <= 0) || type2 === "adjacent angle" && (val2 >= 90 || val2 <= 0)) {
             console.log("Кути повинні бути гострими (меншими за 90 градусів і не нульовим).");
             return "failed";
         }
 
-        if (type1 === "opposite angle" && (val1 >= 90 || val1 <= 0.00000001) || type2 === "opposite angle" && (val2 >= 90 || val2 <= 0.00000001)) {
+        if (type1 === "opposite angle" && (val1 >= 90 || val1 <= 0) || type2 === "opposite angle" && (val2 >= 90 || val2 <= 0)) {
             console.log("Кути повинні бути гострими (меншими за 90 градусів і не нульовим).");
             return "failed";
         }
 
-        if (type1 === "angle" && (val1 >= 90 || val1 <= 0.00000001) || type2 === "angle" && (val2 >= 90 || val2 <= 0.00000001)) {
+        if (type1 === "angle" && (val1 >= 90 || val1 <= 0) || type2 === "angle" && (val2 >= 90 || val2 <= 0)) {
             console.log("Кути повинні бути гострими (меншими за 90 градусів і не нульовим).");
             return "failed";
         }
