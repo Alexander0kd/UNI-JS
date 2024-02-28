@@ -1,7 +1,11 @@
-const SpeakHello = {};
+const SpeakHello = (() => {
+    const speakWord = "Hello";
 
-SpeakHello.speakWord = "Hello";
-    
-SpeakHello.speak = function (name) {
-  console.log(SpeakHello.speakWord + " " + name);
-}
+    function speak(name) { 
+        console.log(speakWord + " " + name);
+    }
+
+    return {
+        speak: speak
+    }
+})();
