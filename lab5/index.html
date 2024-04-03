@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Максимально оригінальна робота, котру зробив єдиний і не повторний "ОК"</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="menu">
+        <h1 class="title">Pixel Hunt</h1>
+        <div class="wrapper">
+            <div class="left">
+                <label for="dif" class="label">Difficulty</label>
+                <select name="dif" id="dif">
+                    <option value="undef" disabled selected>--Please choose an option--</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+
+                <label for="color" class="label">Color</label>
+                <select name="color" id="color">
+                    <option value="undef" disabled selected>--Please choose an option--</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
+
+                <button type="submit" id="start">Start</button>
+            </div>
+            <div class="right" id="preview-block">
+                <div class="cube medium"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="game" class="hidden">
+        <div class="info">
+            <p id="score">Score: 0</p>
+            <p id="time">Time left: 0</p>
+        </div>
+        <div id="game-block"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

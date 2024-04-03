@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#menu {
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 75vh;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.label {
+    margin-bottom: 5px;
+}
+
+select, button {
+    margin-bottom: 15px;
+    padding: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button {
+    transition: background-color .2s;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#game {
+    padding: 20px;
+}
+
+.cube {
+    position: absolute;
+    z-index: 9999;
+    background-color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.cube.easy {
+    width: 96px;
+    height: 96px;
+}
+
+.cube.medium {
+    width: 64px;
+    height: 64px;
+}
+
+.cube.hard {
+    width: 32px;
+    height: 32px;
+}
