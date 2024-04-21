@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Header
     const loadHome = async () => {
         const page = await ajax.GET(`${BASE_URL}/components/home.html`, true);
-        if (main) {
+        if (main && page) {
             main.innerHTML = page;
         }
     };
@@ -33,8 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const pageData = ajax.ngFor(page, catalog.length, catalog);
 
-        if (main) {
+        if (main && pageData) {
             main.innerHTML = pageData;
+
+            const buttons = document.getElementsByClassName("catalog-name");
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', () => {
+                    loadCatalogGroup(catalog[i].id);
+                });
+            }
         }
     };
 
@@ -49,9 +57,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadCatalogGroup = async (catalogId) => {
         const page = await ajax.GET(`${BASE_URL}/components/group.html`, true);
         const catalog = await ajax.GET(`${BASE_URL}/data/categories/response.json`, false);
+        const group = catalog.find((catalog) => catalog.id === catalogId);
 
-        console.log(page);
-        console.log(catalog);
+        if (!group || !page) {
+            return;
+        }
+
+        const data = await ajax.GET(`${BASE_URL}/data/items/${group.shortname}`, false);
+
+        if (!data) {
+            return;
+        }
+
+
+        const pageData = ajax.interpolate(page, data);
+
+        if (main && pageData) {
+            main.innerHTML = pageData;
+
+            const buttons = document.getElementsByClassName("group-name");
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', () => {
+                    loadItem(catalog.id, i);
+                });
+            }
+        }
+
     };
 
     // Group

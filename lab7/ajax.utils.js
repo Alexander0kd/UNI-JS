@@ -27,31 +27,31 @@ const ajax = (() => {
             let pageClone = page;
 
             if (interpolationData != null) {
-                const data = interpolateData[i];
+                const data = interpolationData[i];
                 if (data) {                    
-                    pageClone = interpolateData(pageClone, data);
+                    pageClone = interpolate(pageClone, data);
                 }
             }
 
             response += `${pageClone}\n`;
         }
         
-        console.log(response);
         return response;
+    }
+
+    function interpolate(template, data) {
+        return template.replace(/{{\s*(.*?)\s*}}/g, (match, key) => {
+            return data[key.trim()] || '';
+        });
     }
 
     function handleError(error, mesage) {
         console.error(mesage, error);
     }
 
-    function interpolateData(template, data) {
-        return template.replace(/{{\s*(.*?)\s*}}/g, (match, key) => {
-            return data[key.trim()] || '';
-        });
-    }
-
     return {
         GET: GET,
-        ngFor: ngFor
+        ngFor: ngFor,
+        interpolate: interpolate
     }
 })();
