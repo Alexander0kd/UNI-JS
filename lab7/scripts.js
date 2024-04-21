@@ -63,14 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const data = await ajax.GET(`${BASE_URL}/data/items/${group.shortname}`, false);
-
+        const data = await ajax.GET(`${BASE_URL}/data/items/${group.shortname}.json`, false);
         if (!data) {
             return;
         }
 
-
-        const pageData = ajax.interpolate(page, data);
+        const pageData = ajax.ngFor(page, data.length, data);
 
         if (main && pageData) {
             main.innerHTML = pageData;
@@ -79,20 +77,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].addEventListener('click', () => {
-                    loadItem(catalog.id, i);
+                    loadItem(group.id, i);
                 });
             }
         }
-
     };
 
     // Group
     const loadItem = async (catalogId, itemId) => {
         const page = await ajax.GET(`${BASE_URL}/components/item.html`, true);
         const catalog = await ajax.GET(`${BASE_URL}/data/categories/response.json`, false);
-        
-        console.log(page);
-        console.log(catalog);
+        const group = catalog.find((catalog) => catalog.id === catalogId);
+
+        if (!group || !page) {
+            return;
+        }
+
+        const data = await ajax.GET(`${BASE_URL}/data/items/${group.shortname}.json`, false);
+        if (!data || !data[itemId]) {
+            return;
+        }
+
+        const pageData = ajax.interpolate(page, data[itemId]);
+
+        if (main && pageData) {
+            main.innerHTML = pageData;
+        }
     };
 
     bindHeaderButtons();
