@@ -24,6 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const page = await ajax.GET(`${BASE_URL}/components/home.html`, true);
         if (main && page) {
             main.innerHTML = page;
+
+            const randomButton = document.getElementById("btn-random");
+            if (!randomButton) {
+                return;
+            }
+
+            randomButton.addEventListener('click', () => {
+                loadRandom();
+            });
         }
     };
 
@@ -48,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Home
     const loadRandom = async () => {
-        const data = await ajax.GET(`${BASE_URL}/data/categories/response.json`, false);
+        const catalog = await ajax.GET(`${BASE_URL}/data/categories/response.json`, false);
 
-        console.log(data);
+        loadCatalogGroup(Math.floor(Math.random() * catalog.length));
     };
 
     // Catalog
