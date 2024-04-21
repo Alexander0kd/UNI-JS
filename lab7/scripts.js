@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    const main = document.getElementById("main");
     const BASE_URL = 'https://raw.githubusercontent.com/Alexander0kd/UNI-JS/main/lab7';
 
     const bindHeaderButtons = () => {
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const catalog = document.getElementById('btn-catalog');
         if (catalog) {
-            home.addEventListener('click', () => {
+            catalog.addEventListener('click', () => {
                 loadCatalog();
             });
         }
@@ -22,20 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Header
     const loadHome = async () => {
         const page = await ajax.GET(`${BASE_URL}/components/home.html`, true);
-
-        console.log(page);
+        if (main) {
+            main.innerHTML = page;
+        }
     };
 
     const loadCatalog = async () => {
         const page = await ajax.GET(`${BASE_URL}/components/catalog.html`, true);
         const catalog = await ajax.GET(`${BASE_URL}/data/categories/response.json`, false);
 
-        console.log(page);
-        console.log(catalog);
+        const pageData = ajax.ngFor(page, catalog.length, catalog);
 
-        console.log("Catalog:");
-        console.log(JSON.parse(catalog));
-        console.log(JSON.stringify(catalog));
+        if (main) {
+            main.innerHTML = pageData;
+        }
     };
 
     // Home
@@ -64,4 +64,5 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     bindHeaderButtons();
+    loadHome();
 });

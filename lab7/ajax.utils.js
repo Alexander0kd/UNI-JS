@@ -20,11 +20,38 @@ const ajax = (() => {
         }
     }
 
+    function ngFor(page, count, interpolationData) {
+        let response = '';
+
+        for (let i = 0; i < count; i++) {
+            let pageClone = page;
+
+            if (interpolationData != null) {
+                const data = interpolateData[i];
+                if (data) {                    
+                    pageClone = interpolateData(pageClone, data);
+                }
+            }
+
+            response += `${pageClone}\n`;
+        }
+        
+        console.log(response);
+        return response;
+    }
+
     function handleError(error, mesage) {
         console.error(mesage, error);
     }
 
+    function interpolateData(template, data) {
+        return template.replace(/{{\s*(.*?)\s*}}/g, (match, key) => {
+            return data[key.trim()] || '';
+        });
+    }
+
     return {
-        GET: GET
+        GET: GET,
+        ngFor: ngFor
     }
 })();
