@@ -90,7 +90,8 @@ footer {
 }
 
 .catalog-notes {
-    margin-top: 8px;
+    max-width: 200px;
+    padding: 4px;
 }
 
 .item {
