@@ -43,7 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const pageData = ajax.ngFor(page, catalog.length, catalog);
 
         if (main && pageData) {
-            main.innerHTML = pageData;
+            main.innerHTML = `
+                <div class="catalog-wrapper">
+                    <h2>Каталог</h2>
+                    <div class="catalog-items">
+                        ${pageData}
+                    </div>
+                </div>
+            `;
 
             const buttons = document.getElementsByClassName("catalog-name");
 
@@ -80,7 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const pageData = ajax.ngFor(page, data.length, data);
 
         if (main && pageData) {
-            main.innerHTML = pageData;
+            main.innerHTML = `
+                <div class="catalog-wrapper">
+                    <h2>${group.name}</h2>
+                    <div class="catalog-items">
+                        ${pageData}
+                    </div>
+                </div>
+            `;
 
             const buttons = document.getElementsByClassName("group-name");
 

@@ -4,14 +4,14 @@
         "img": "https://place-hold.it/200x200",
         "name": "Електроніка",
         "shortname": "electronics",
-        "notes": ""
+        "notes": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet obcaecati quaerat debitis unde vero, eos cum modi sed incidunt earum, illum praesentium placeat hic facere consequuntur aspernatur illo. Necessitatibus ea voluptatem ullam earum veniam, in harum alias nihil consectetur quaerat consequuntur quam architecto quo? Ipsam ex velit voluptate aliquid cupiditate?"
     },
     {
         "id": 2,
         "img": "https://place-hold.it/200x200",
         "name": "Одяг",
         "shortname": "clothing",
-        "notes": ""
+        "notes": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
     },
     {
         "id": 3,
